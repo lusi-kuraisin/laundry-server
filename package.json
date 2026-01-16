@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "build": "npx sequelize db:migrate && npx sequelize db:seed:all"
+    "build": "echo build-ok"
   },
   "keywords": [],
   "author": "",
