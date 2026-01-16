@@ -17,3 +17,5 @@ build/
 coverage/
 .vscode/
 *.sqlite
+package-lock.json
+__MACOSX/
