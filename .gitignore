@@ -19,3 +19,4 @@ coverage/
 *.sqlite
 package-lock.json
 __MACOSX/
+.vercel

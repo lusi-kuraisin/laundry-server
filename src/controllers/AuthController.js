@@ -9,7 +9,7 @@ const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
-  const clientType = req.headers["x-client-type"] || "mobile";
+  const clientType = req.headers["x-client-type"] || "web";
 
   try {
     const user = await User.findOne({ where: { email } });
@@ -32,6 +32,7 @@ const loginUser = async (req, res) => {
     const token = generateToken(user);
 
     if (clientType === "web") {
+      console.log("Kirim Cookie ke Web berhasil.");
       res.cookie("token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
@@ -50,7 +51,7 @@ const loginUser = async (req, res) => {
         name: user.name,
         email: user.email,
       },
-      ...(clientType === "mobile" && { token }),
+      ...(clientType === "web" && { token }),
     });
   } catch (error) {
     console.error("Login Error:", error);
